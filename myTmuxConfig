@@ -1,0 +1,43 @@
+# Set the default terminal
+set -g default-terminal "screen-256color"
+
+# Enable 256 color support
+set -g terminal-overrides ",*256col*:Tc"
+
+# Enable mouse support (if desired)
+set -g mouse on
+
+set -g @plugin 'tmux-plugins/tpm'
+
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+
+set -g status-right '#{prefix_highlight} | %a %Y-%m-%d %H:%M'
+
+set -g @plugin "arcticicestudio/nord-tmux"
+
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+
+run -b '~/.tmux/plugins/tpm/tpm'
+
+set-option -g status-style bg=default
+
+set -g status-keys vi
+setw -g mode-keys vi
+
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+
+
+# smart pane switching with awareness of vim splits
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+set-option -g status-style bg=default
+
+#set -g status-left='#[bg=colour89]ANYTHING CAN GO HERE[#bg=default] AND HERE TOO!'
+#wal -a 92 -i <image>
